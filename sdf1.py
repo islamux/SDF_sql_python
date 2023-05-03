@@ -1,4 +1,3 @@
-
 import sqlite3
 
 # Connect to the database
@@ -15,11 +14,12 @@ c.execute('''CREATE TABLE IF NOT EXISTS employee (
 
 # Get user input
 employee_id = input("Enter the employee id: ")
-employee_name = input("Enter the name of employee")
+name = input("Enter the name of employee: ")
 leaves = input("Enter the number of leaves: ")
 absent = input("Enter the number of absent days: ")
 
-# Update the employee name 
+# Add new employee name 
+c.execute(f"INSERT INTO employee (name, leaves, absent) VALUES ('{name}', {leaves}, {absent})")
 
 # Update the employee's leaves and absent days
 c.execute(f"UPDATE employee SET leaves = {leaves}, absent = {absent} WHERE id = {employee_id}")
